@@ -2,7 +2,7 @@
 import random # import random number generation capabilities
 
 # declare global constant
-CONST_MAX_GUESSES = 7
+CONST_MAX_GUESSES = 7 # using a CONST for future feature
 
 # get the player name
 print('Please enter your name: ', end='')
@@ -18,13 +18,12 @@ random_number = random.randint(1, 100)
 print(random_number) # for testing purposes
 print('')
 
-# declare variables
-number_of_guesses_left = CONST_MAX_GUESSES # using a CONST for future feature
+# declare variables for the number of guesses a player has used and the integer that they guessed
 guess_number = 0
 player_guess = 0
 
 # continues play until the maximum number of guesses has been reached
-while number_of_guesses_left > 0:
+while guess_number < CONST_MAX_GUESSES:
     try:
         # get the guess from the player
         guess_number += 1
@@ -35,14 +34,12 @@ while number_of_guesses_left > 0:
         if int(player_guess) > random_number:
             print('That guess was too high...')
             print('')
-            number_of_guesses_left -= 1
             continue
     
         # compare the guess with the actual number, give feedback to the player, and use a guess
         elif int(player_guess) < random_number:
             print('That guess was too low...')
             print('')
-            number_of_guesses_left -= 1
             continue
     
     # catches any invalid input and gives feedback to the player
