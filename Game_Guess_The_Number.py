@@ -14,7 +14,7 @@ print('Hello, ' + player_name + '! Let\'s play a game! I\'m thinking of a random
 print('')
 
 
-# declare variables for the number of guesses a player has used and the integer that they guessed
+# declare variables for the application loop, number of guesses a player has used, and the integer that they guessed
 bool_continue_game = True
 guess_number = 0
 player_guess = 0
@@ -24,6 +24,7 @@ while bool_continue_game == True:
 
     # get the random number
     random_number = random.randint(1, 100)
+    print(random_number)
 
     # single game loop. continue play until the maximum number of guesses has been reached
     while guess_number < CONST_MAX_GUESSES:
@@ -78,23 +79,34 @@ while bool_continue_game == True:
     # ask the player if they would like to play again
     print('Would you like to play again, ' + player_name + '? (Y for YES, N for NO): ', end='')
     play_again = input()
-
-    # reset the relevant counts and start a new game
-    if play_again == 'Y' or play_again == 'y': 
-        guess_number = 0
-        player_guess = 0
-        print('')
-        print('Ok! I\'m thinking of another number between 1 and 100. Try to guess what it is!')
-        print('')
-        continue
     
-    # terminate the overall game loop, thus ending the game
-    else:
-        bool_continue_game = False
-        print('')
-        print('Ending game... catch you later, ' + player_name + '!')
-        print('')
-        break
+    while play_again != 'Y' or play_again != 'Y' or play_again != 'N' or play_again != 'n':
+
+        # reset the relevant counts and start a new game
+        if play_again == 'Y' or play_again == 'y': 
+            guess_number = 0
+            player_guess = 0
+            print('')
+            print('Ok! I\'m thinking of another number between 1 and 100. Try to guess what it is!')
+            print('')
+            break
+    
+        # terminate the overall game loop, thus ending the game
+        elif play_again == 'N' or play_again == 'n':
+            bool_continue_game = False
+            print('')
+            print('Ending game... catch you later, ' + player_name + '!')
+            print('')
+            break
+        
+        # execute repeatedly for invalid input
+        else:
+            bool_continue_game = False
+            print('')
+            print('Invalid input detected. Would you like to play again, ' + player_name + '? (Y for YES, N for NO): ', end='')
+            play_again = input()
+            continue
+        
 
 
 
