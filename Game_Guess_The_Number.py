@@ -21,7 +21,7 @@ while bool_continue_game == True:
 
     # get the random number
     random_number = random.randint(1, 100)
-    print(random_number)
+    print(random_number) # for testing purposes
 
     # single game loop. continue play until the maximum number of guesses has been reached
     while guess_number < CONST_MAX_GUESSES:
@@ -68,17 +68,17 @@ while bool_continue_game == True:
     print("Would you like to play again, " + player_name + "? (Y for YES, N for NO): ", end="")
     play_again = input()
     
-    while play_again != 'Y' or play_again != 'Y' or play_again != 'N' or play_again != 'n':
+    while play_again.lower() != 'y' or play_again.lower() != 'n':
 
         # reset the relevant counts and start a new game
-        if play_again == 'Y' or play_again == 'y': 
+        if play_again.lower() == 'y': 
             guess_number = 0
             player_guess = 0
             print("\nOk! I'm thinking of another number between 1 and 100. Try to guess what it is!\n")
             break
     
         # terminate the overall game loop, thus ending the game
-        elif play_again == 'N' or play_again == 'n':
+        elif play_again.lower() == 'n':
             bool_continue_game = False
             print("\nEnding game... catch you later, " + player_name + "!\n")
             break
