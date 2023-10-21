@@ -1,8 +1,8 @@
 
 import random # import random number generation capabilities
 
-# declare global constant
-CONST_MAX_GUESSES = 7 # using a CONST for future feature
+# declare global constant for max number of guesses
+CONST_MAX_GUESSES = 7
 
 # get the player name
 print('Please enter your name: ', end='')
@@ -19,13 +19,13 @@ bool_continue_game = True
 guess_number = 0
 player_guess = 0
 
-# overall game loop. will continue looping until the player no longer wishes to continue play
+# application loop. loops until the player no longer wishes to continue
 while bool_continue_game == True:    
 
     # get the random number
     random_number = random.randint(1, 100)
 
-    # single game loop. continues play until the maximum number of guesses has been reached
+    # single game loop. continue play until the maximum number of guesses has been reached
     while guess_number < CONST_MAX_GUESSES:
         try:
             # get the guess from the player
@@ -45,20 +45,20 @@ while bool_continue_game == True:
                 print('')
                 continue
     
-        # catches any invalid input and gives feedback to the player
+        # catch any invalid input and give feedback to the player
         except:
             print('Invalid input detected, please make sure your guess is a whole number.')
             print('')
         
-            # gives the player their guess back in case they wasted it on invalid input
+            # give the player their guess back in case they wasted it on invalid input
             guess_number -= 1
     
-        # this code only executes if the player guesses the correct number
+        # execute if the player guesses the correct number to end the game
         else:
             break    
 
 
-    # if the player guesses the correct number, print the message for a win
+    # if the player guessed the correct number, print the message for a win
     if int(player_guess) == random_number:
         if guess_number == 1:
             print('')
@@ -70,7 +70,7 @@ while bool_continue_game == True:
             print('Congratulations, ' + player_name + '! You have correctly guessed the number ' + str(random_number) + ' in ' + str(guess_number) + ' guesses and won the game!')
             print('')
 
-    # if the player does not guess the correct number, print the message for a loss
+    # if the player did not guess the correct number, print the message for a loss
     else:
         print('You have exceeded the maximum number of guesses and lost the game... the number was ' + str(random_number) + '! Better luck next time, ' + player_name + '!')
         print('')
@@ -79,7 +79,7 @@ while bool_continue_game == True:
     print('Would you like to play again, ' + player_name + '? (Y for YES, N for NO): ', end='')
     play_again = input()
 
-    # resets the relevant counts and starts a new game
+    # reset the relevant counts and start a new game
     if play_again == 'Y' or play_again == 'y': 
         guess_number = 0
         player_guess = 0
@@ -88,7 +88,7 @@ while bool_continue_game == True:
         print('')
         continue
     
-    # terminates the overall game loop, thus ending the game
+    # terminate the overall game loop, thus ending the game
     else:
         bool_continue_game = False
         print('')
